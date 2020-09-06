@@ -2,3 +2,5 @@
 build/
 *.pbxuser
 xcuserdata
+*.out
+*.geany
