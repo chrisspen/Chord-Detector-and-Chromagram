@@ -43,13 +43,20 @@ Chromagram::Chromagram (int frameSize, int fs)
     
     // setup chromagram vector
     chromagram.resize (12);
-    
+
+    pitches.resize (12*numOctaves);
+
     // initialise chromagram
     for (int i = 0; i < 12; i++)
     {
         chromagram[i] = 0.0;
     }
-    
+
+    for (int i = 0; i < 12*numOctaves; i++)
+    {
+        pitches[i] = 0.0;
+    }
+
     // setup magnitude spectrum vector
     magnitudeSpectrum.resize ((bufferSize/2)+1);
     
@@ -173,6 +180,12 @@ std::vector<double> Chromagram::getChromagram()
 }
 
 //==================================================================================
+std::vector<double> Chromagram::getPitches()
+{
+    return pitches;
+}
+
+//==================================================================================
 bool Chromagram::isReady()
 {
     return chromaReady;
@@ -233,6 +246,7 @@ void Chromagram::calculateChromagram()
             }
             
             chromaSum += noteSum;
+            pitches[n*(octave-1)] = noteSum;
         }
         
         chromagram[n] = chromaSum;

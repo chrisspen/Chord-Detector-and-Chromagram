@@ -88,6 +88,9 @@ public:
     /** @returns the chromagram vector */
     std::vector<double> getChromagram();
     
+    /** @returns the chromagram vector */
+    std::vector<double> getPitches();
+
     /** @returns true if a new chromagram vector has been calculated at the current iteration. This should
      * be called after processAudioFrame
      */
@@ -107,6 +110,7 @@ private:
     std::vector<double> magnitudeSpectrum;
     std::vector<double> downsampledInputAudioFrame;
     std::vector<double> chromagram;
+    std::vector<double> pitches;
     
     double referenceFrequency;
     double noteFrequencies[12];
