@@ -113,7 +113,8 @@ private:
     std::vector<double> pitches;
     
     double referenceFrequency;
-    double noteFrequencies[12];
+    //double noteFrequencies[12];
+    std::vector<double> noteFrequencies;
     
     int bufferSize;
     int samplingFrequency;
